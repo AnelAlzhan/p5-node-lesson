@@ -1,6 +1,5 @@
-console.log("up and running");
+//console.log("up and running");
 
-const { prototype } = require("events");
 let express = require("express");
 
 let app = express();
@@ -13,7 +12,7 @@ console.log("server is runninig on http://localhost:" + port);
 
 app.use(express.static("public"));
 
-let serverSocket = require("socket.io");
+let serverSocket = require("socket.io"); //the problem here
 
 let io = serverSocket(server);
 
