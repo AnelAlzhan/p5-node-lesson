@@ -1,3 +1,5 @@
+let clientSocket = io();
+
 function setup() {
   createCanvas(400, 400);
 }
