@@ -1,16 +1,33 @@
 let clientSocket = io();
 
 clientSocket.on("connect", newConnection);
+clientSocket.on("mouseBroadcast", newBroadcast);
 
 function newConnection() {
   console.log(clientSocket.id);
 }
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, windowHeight);
+  background(220);
 }
 
 function draw() {
-  background(220);
+  fill("blue");
   circle(mouseX, mouseY, 50);
+}
+
+function mouseMoved() {
+  let message = {
+    x: mouseX,
+    y: mouseY,
+  };
+
+  clientSocket.emit("mouse", message);
+}
+
+function newBroadcast(data) {
+  console.log(data);
+  fill("red");
+  circle(data.x, data.y, 10);
 }
